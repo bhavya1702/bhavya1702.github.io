@@ -1,41 +1,55 @@
+/* CSS Variables */
+:root{
+    --navy: #00032e;
+    --green:#00ff88;
+    --white:#ffffff;
+    --navy-light:#0a1050;
+    --text-muted:#b8bcd9;
+}
+/* Global Styles */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* Navbar Styles */
 .navbar {
-     background-color: #00032e;
+     background-color: var(--navy);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 4px 40px;
     font-family: 'Space Grotesk', sans-serif;
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
+/* Logo Styles */
 .profile-pic {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* Navigation Styles */
 .navbar ul{
     list-style-type: none;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-
+/* Navigation Link Styles */
 .navbar li {
     display: inline;
     padding: 14px 20px;
 }
-
+/* Navigation Link Hover Styles */
 .navbar li a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
     position: relative;
 }
-
+/* Navigation Link Hover Underline Styles */
 .navbar li a::after{
     content: "";
     position:absolute;
@@ -43,17 +57,18 @@
     bottom: -5px;
     width:0%;
     height: 2px;
-    background-color: #00ff88;
+    background-color: var(--green);
     transition: width 0.3s ease;
 
 }
-
+/* Navigation Link Hover Styles */
 .navbar li a:hover::after, .navbar ul li a.active::after{
     width: 100%;
 }
 /* ul li a.active {
     color: #00ff88;
 } */
+ /* Main Styles */
 body{
     font-family: 'Space Grotesk', sans-serif;
     font-size: 16px;
@@ -62,24 +77,221 @@ body{
     flex-direction: column;
     min-height: 100vh;
  }
- .ex_container ul{
-    list-style-type: disc;
-    padding-left: 20px;
-
- }
+ /* Main Content Styles */
  .main{
 
     flex:1;
  }
+ /* Container Styles */
+ .container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+ }
+/* Hero Section Styles */
+ .hero{
+    background: radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.15), transparent 40%),linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 100px 0;
+ }
+ /* Hero Text Styles */
+ .eyebrow{
+    color: var(--green);
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size:14px;
+    margin-bottom:16px;
+ }
+ /* Hero Heading Styles */
+ .hero h1{
+    font-size:56px;
+    line-height:1.1;
+    max-width:14em;
+    margin-bottom:24px;
+ }
+ /* Hero Lead Text Styles */
+ .lead{
+    font-size: 20px;
+    color:var(--text-muted);
+    max-width: 60ch;
+    margin-bottom: 40px;
+ }
+ /* Hero Button Styles */
+ .hero-buttons{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+ }
 
-.footer {
-    background-color: #00032e;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(24px);}
+    to{opacity:1; transform:translateY(0);}
+}
+.eyebrow, .hero h1, .lead, .hero-buttons{
+    opacity:0;
+    animation: fadeUp 0.8s ease forwards;
+}
+.eyebrow{
+    animation-delay:0.1s;
+}
+.hero h1{
+    animation-delay:0.25s;
+}
+.lead{
+    animation-delay:0.4s;
+}
+.hero-buttons{
+    animation-delay:0.55s;
 }
 
-.highlight{
+@media (prefers-reduced-motion: reduce){
+    .eyebrow, .hero h1, .lead, .hero-buttons{
+        animation:none;
+        opacity:1;
+    }
+}
+ /* Button Styles */
 
-    font-weight: bold;
+.btn{
+    display:inline-block;
+    padding: 14px 28px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:500;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+ /* Button Hover Styles */
+.btn:hover{
+    transform: translateY(-2px);
+}
+/* Secondary Button Styles */
+.btn-secondary{
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+/* Secondary Button Hover Styles */
+.btn-secondary:hover{
+        background-color: var(--white);
+        color: var(--navy);
+}
+/* Page Header Styles */
+.page-header{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color:var(--white);
+    padding:70px 0;
+}
+.page-header h1{
+    font-size: 44px;
+    line-height:1.1;
+    margin-bottom:12px;
+}
+.page-header p{
+    font-size:18px;
+    color:var(--text-muted);
+}
+/* Experience Section Styles */
+.experience{
+    background:#f5f7fb;
+    padding: 60px 0;
+}
+.experience h2{
+    font-size:28px;
+    color:var(--navy);
+    margin-bottom:24px;
+}
+/* Card Styles */
+.card{
+    background: var(--white);
+    border: 1px solid #e3e6f0;
+    border-radius: 16px;
+    padding:32px;
+    margin-bottom:24px;
+    box-shadow:0 4px 20px rgba(0,3,46,0.06);
+}
+.card h3{
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+.meta{
+    font-size:14px;
+    color:#6b7094;
+    margin-bottom:16px;
+}
+.description{
+    margin-bottom:16px;
+
+}
+.card ul{
+    padding-left:20px;
+}
+.card li{
+    margin-bottom:8px;
+}
+.card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,3,46,0.12);
+}
+
+.tags{
+    list-style:none;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:12px 0 24px;
+}
+
+.tags li{
+    background: #eef0fa;
+    color: var(--navy);
+    padding: 6px 14px;
+    border-radius:999px;
+    font-size:14px;
+    margin-bottom:0;
+    transition:background 0.3s ease, color 0.3s ease;
+}
+
+.tags li:hover{
+    background: var(--navy);
+    color: var(--green);
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--navy);
+    color: var(--white);
+    text-align: center;
+    padding: 48px 0 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-cta {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--green);
+}
+
+.copyright {
+    font-size: 14px;
+    color: var(--text-muted);
 }
